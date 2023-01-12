@@ -11,9 +11,12 @@ import java.util.ArrayList;
 public class NodeModel {
 
     private int value;
+    private int balance = 0;
 
     private NodeModel left;
     private NodeModel right;
+
+    private static NodeModel unbalancedNode = null;
 
     public NodeModel(int value) {
         this.value = value;
@@ -36,6 +39,8 @@ public class NodeModel {
                 addChild(root.getRight(), nodeModel);
         }
 
+        root.balance = root.getDepth(root.getLeft(), 0, 0) - root.getDepth(root.getRight(), 0, 0);
+
     }
 
     public static String printTree(NodeModel root){
@@ -45,7 +50,7 @@ public class NodeModel {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(printTree(root.left));
-        stringBuilder.append(" " + root.getValue() + " ");
+        stringBuilder.append(" value: " + root.getValue() + " balance: " + root.balance + " ");
         stringBuilder.append(printTree(root.right));
 
         return stringBuilder.toString();
@@ -66,6 +71,6 @@ public class NodeModel {
     }
     @Override
     public String toString() {
-        return String.valueOf(value);
+        return String.valueOf(value) + "," + balance;
     }
 }

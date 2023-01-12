@@ -76,7 +76,7 @@ public class CalculatePosition {
         }
 
         try {
-            Thread.sleep(dTime);
+            Thread.currentThread().sleep(dTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

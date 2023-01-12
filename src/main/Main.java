@@ -13,17 +13,17 @@ public class Main {
     public static void main(String[] args) {
 
 
-        NodeModel nodeModel = new NodeModel(256);
+        NodeModel nodeModel = new NodeModel(6);
 
-        for (int i = 0; i < 7; i++){
-
-            int delta = 256;
-            int count = (int) Math.pow(2, i+1);
-
-            for (int j = 1; j <= count; j++){
-                nodeModel.addChild(nodeModel, new NodeModel(   delta/(count) + delta/(count)*(j-1)*2      ));
-            }
-        }
+//        for (int i = 0; i < 7; i++){
+//
+//            int delta = 256;
+//            int count = (int) Math.pow(2, i+1);
+//
+//            for (int j = 1; j <= count; j++){
+//                nodeModel.addChild(nodeModel, new NodeModel(   delta/(count) + delta/(count)*(j-1)*2      ));
+//            }
+//        }
 
 //        NodeModel nodeModel = new NodeModel(500);
 //

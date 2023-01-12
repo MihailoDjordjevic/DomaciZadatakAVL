@@ -17,7 +17,7 @@ public class NodeView<T extends NodeModel> extends JPanel {
     public NodeView(T nodeModel) {
         setBackground(Color.GRAY);
         setBorder(new LineBorder(Color.BLACK, 2));
-        add(new JLabel("" + nodeModel.getValue()));
+        add(new JLabel(nodeModel.toString()));//"" + nodeModel.getValue()));
         this.nodeModel = nodeModel;
     }
 }

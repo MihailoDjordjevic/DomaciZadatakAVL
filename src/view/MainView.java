@@ -20,7 +20,7 @@ public class MainView extends JFrame {
     private JScrollPane scrollHolder;
     private JButton add;
     private JTextField textField;
-    private NodeModel root;
+    private NodeModel root = null;
     private JSlider speedSlider;
 
     private static MainView mainView;
@@ -92,31 +92,6 @@ public class MainView extends JFrame {
     public void redraw(){
         MainView mainView = MainView.getInstance();
 
-        Integer number = null;
-        try {
-
-            number = Integer.valueOf(mainView.getTextField().getText());
-
-        } catch (NumberFormatException e) {
-
-            mainView.getHolderPanel().removeAll();
-            mainView.getHolderPanel().getPoints().clear();
-            SwingUtilities.updateComponentTreeUI(mainView);
-
-            CalculatePosition calculatePosition = new CalculatePosition(mainView.getRoot(), mainView);
-            calculatePosition.printNodes();
-            return;
-        }
-
-
-        NodeView<NodeModel> nodeView = new NodeView<>(new NodeModel(number));
-
-        mainView.getHolderPanel().removeAll();
-        mainView.getHolderPanel().getPoints().clear();
-
-        SwingUtilities.updateComponentTreeUI(mainView);
-
-        mainView.getRoot().addChild(mainView.getRoot(), nodeView.getNodeModel());
 
         CalculatePosition calculatePosition = new CalculatePosition(mainView.getRoot(), mainView);
         calculatePosition.printNodes();

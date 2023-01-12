@@ -13,6 +13,23 @@ public class AddListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         MainView mainView = MainView.getInstance();
 
+        Integer number = null;
+        try {
+            number = Integer.valueOf(mainView.getTextField().getText());
+        } catch (NumberFormatException e1) {
+            return;
+        }
+
+        NodeView<NodeModel> nodeView = new NodeView<>(new NodeModel(number));
+
+        mainView.getHolderPanel().removeAll();
+        mainView.getHolderPanel().getPoints().clear();
+
+        SwingUtilities.updateComponentTreeUI(mainView);
+
+        if (mainView.getRoot() == null) mainView.setRoot(nodeView.getNodeModel());
+        else mainView.getRoot().addChild(mainView.getRoot(), nodeView.getNodeModel());
+
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -20,6 +37,8 @@ public class AddListener implements MouseListener {
             }
         });
         t.start();
+
+        System.out.println(NodeModel.printTree(mainView.getRoot()));
         return;
 
     }
