@@ -84,9 +84,8 @@ public class MainView extends JFrame {
 
         if (mainView == null){
             mainView = new MainView("Tree viewer");
-            return mainView;
         }
-        else return mainView;
+        return mainView;
     }
 
     public void redraw(){
